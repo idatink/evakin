@@ -62,6 +62,26 @@ a{color:#1F5C5A}a:hover{color:#163F3E}
 .hud-t{font-family:'Inter Tight',sans-serif;font-weight:300;font-size:15px;line-height:20px;color:rgba(255,255,255,0.88);text-shadow:0 1px 8px rgba(10,20,28,0.35);margin-top:3px}
 .hud-tag{display:inline-block;border:1px solid rgba(255,255,255,0.5);border-radius:3px;background:rgba(20,32,43,0.14);padding:5px 10px;font-size:11px}
 .hud-pulse{display:flex;flex-direction:column;gap:6px}
+.cs{position:relative}
+.cs-r{position:absolute;opacity:0;pointer-events:none}
+.cs-tabs{display:flex;gap:10px;margin:0 0 40px;overflow-x:auto;scrollbar-width:none;padding:2px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.cs-tab{scroll-snap-align:start}
+@media (max-width:640px){#join form{flex:1 1 100%!important;min-width:0}#join form select,#join form input{min-width:0;width:100%}}
+@media (max-width:640px){.cs-tabs{margin-right:-20px;padding-right:20px}}
+.cs-tabs::-webkit-scrollbar{display:none}
+.cs-tab{flex:none;display:flex;flex-direction:column;gap:2px;cursor:pointer;border:1px solid #CFC9BE;border-radius:18px;padding:12px 20px;min-height:52px;box-sizing:border-box;background:#FFFFFF;color:#14202B;transition:background .2s,color .2s,border-color .2s}
+.cs-tab b{font-weight:600;font-size:15px;line-height:20px}.cs-tab span{font-size:13px;line-height:18px;color:#5A6670}
+.cs-tab:hover{border-color:#14202B}
+.cs-panel{display:none}
+#cs1:checked~.cs-p1,#cs2:checked~.cs-p2,#cs3:checked~.cs-p3,#cs4:checked~.cs-p4{display:block;animation:csin .35s ease-out}
+#cs1:checked~.cs-tabs label[for=cs1],#cs2:checked~.cs-tabs label[for=cs2],#cs3:checked~.cs-tabs label[for=cs3],#cs4:checked~.cs-tabs label[for=cs4]{background:#14202B;border-color:#14202B;color:#FFFFFF}
+#cs1:checked~.cs-tabs label[for=cs1] span,#cs2:checked~.cs-tabs label[for=cs2] span,#cs3:checked~.cs-tabs label[for=cs3] span,#cs4:checked~.cs-tabs label[for=cs4] span{color:#C9D3D8}
+#cs1:focus-visible~.cs-tabs label[for=cs1],#cs2:focus-visible~.cs-tabs label[for=cs2],#cs3:focus-visible~.cs-tabs label[for=cs3],#cs4:focus-visible~.cs-tabs label[for=cs4]{outline:2px solid #1F5C5A;outline-offset:2px}
+@keyframes csin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.cs-panel{animation:none!important}}
+.cs-wide{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:stretch}
+@media (max-width:1000px){.cs-wide{grid-template-columns:minmax(0,1fr);gap:28px}}
+@media (max-width:640px){.cs-tile{padding:22px!important;min-height:0!important;border-radius:22px!important}.cs-tab{padding:10px 16px}}
 @media (max-width:1000px){.hud-stack{top:16%;gap:6px}.hud-box{padding:6px 10px}.hud-t{font-size:13px;line-height:17px}.hud-pulse svg{width:110px;height:22px}}
 @media (max-width:640px){.hud-stack{left:44%;top:9%;max-width:53%;gap:5px}.hud-vision,.hud-share{display:none}.hud-box{padding:4px 8px}.hud-l{font-size:8px;line-height:11px;letter-spacing:0.12em}.hud-t{font-size:11px;line-height:14px;margin-top:1px}.hud-tag{font-size:9px;padding:3px 7px}.hud-pulse svg{width:80px;height:16px}
 .hud-panel .a5{display:none}.hud-panel>div[class^="a"]{max-width:44%!important;padding:5px 8px!important}.hud-panel>div[class^="a"]>div:last-child{font-size:12px!important;line-height:16px!important}}
@@ -310,9 +330,16 @@ a{color:#1F5C5A}a:hover{color:#163F3E}
 
 <section id="eva" aria-labelledby="eva-title" style="background: #F3F1EC">
 <div class="sec" style="max-width: 1280px; margin: 0 auto; padding: 112px 32px 120px; box-sizing: border-box">
-<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #1F5C5A">Case study · Parkinson's at home</p>
-<h2 id="eva-title" class="h2" style="margin: 16px 0 0; font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: 44px; line-height: 50px; letter-spacing: -0.015em; max-width: 820px">A day with Elena, 81, living with Parkinson's.</h2>
-<p style="margin: 20px 0 56px; font-size: 18px; line-height: 29px; color: #3D4A55; max-width: 760px">Elena lives at home with a carer. Here is how EVA supports her medication, movement, sleep and mood, and keeps her family close.</p>
+<p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #1F5C5A">Case studies · Care at home</p>
+<h2 id="eva-title" class="h2" style="margin: 16px 0 0; font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: 44px; line-height: 50px; letter-spacing: -0.015em; max-width: 820px">Four families. One steady presence.</h2>
+<p style="margin: 20px 0 40px; font-size: 18px; line-height: 29px; color: #3D4A55; max-width: 760px">Parkinson's, dementia, stroke and falls are where adult children struggle most to care from a distance. Choose a story to see how EVA helps.</p>
+<div class="cs">
+<input type="radio" name="cs" id="cs1" class="cs-r" checked><input type="radio" name="cs" id="cs2" class="cs-r"><input type="radio" name="cs" id="cs3" class="cs-r"><input type="radio" name="cs" id="cs4" class="cs-r">
+<div class="cs-tabs" role="tablist" aria-label="Case studies"><label for="cs1" id="cs-l1" class="cs-tab" role="tab"><b>Parkinson's</b><span>Elena, 81</span></label><label for="cs2" id="cs-l2" class="cs-tab" role="tab"><b>Dementia</b><span>Margaret, 84</span></label><label for="cs3" id="cs-l3" class="cs-tab" role="tab"><b>Stroke recovery</b><span>George, 78</span></label><label for="cs4" id="cs-l4" class="cs-tab" role="tab"><b>Falls, living alone</b><span>Joan, 86</span></label></div>
+<div class="cs-panel cs-p1" role="tabpanel" aria-labelledby="cs-l1">
+<h3 class="h2" style="margin: 16px 0 0; font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: 36px; line-height: 42px; letter-spacing: -0.015em; max-width: 820px">A day with Elena, 81, living with Parkinson's.</h3>
+
+<p style="margin: 16px 0 40px; font-size: 18px; line-height: 29px; color: #3D4A55; max-width: 760px">Elena lives at home with a carer. Here is how EVA supports her medication, movement, sleep and mood, and keeps her family close.</p>
 <div class="bento" style="display: grid; gap: 20px">
 <div class="photo-tile" style="grid-column: span 7; position: relative; border-radius: 28px; background: #2A3640; min-height: 560px; overflow: hidden; box-sizing: border-box">
 <img src="img/meet-eva.jpg" alt="A carer and an older woman laughing over tea in her living room" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%">
@@ -393,7 +420,57 @@ a{color:#1F5C5A}a:hover{color:#163F3E}
 <div style="background: #FFFFFF; border-radius: 20px; box-shadow: 0 10px 30px rgba(20,32,43,0.10); box-sizing: border-box; padding: 16px 18px; max-width: 240px; margin-bottom: 24px; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 12px; color: #5A6670">Approval needed</span><b style="font-weight: 600; font-size: 15px">New carer starts Monday</b><span style="font-size: 13px; line-height: 19px; color: #3D4A55">EVA has prepared her briefing. Approve sharing Mum's care guide?</span></div></div></div>
 </div>
 </div>
-<p style="margin: 32px 0 0; font-size: 13px; line-height: 20px; color: #5A6670">Elena is a composite case for illustration, not a real patient. Names and screens are illustrative.</p>
+</div>
+<div class="cs-panel cs-p2" role="tabpanel" aria-labelledby="cs-l2">
+<div class="cs-wide">
+<div style="display: flex; flex-direction: column; gap: 22px; padding: 8px 0">
+<div><p style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A55">Dementia · Alzheimer's</p>
+<h3 class="h2" style="margin: 10px 0 0; font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: 36px; line-height: 42px; letter-spacing: -0.015em">Margaret, 84, living with Alzheimer's at home.</h3></div>
+<div><p style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #8A5A12">Where the family struggles</p>
+<p style="margin: 8px 0 0; font-size: 18px; line-height: 29px; color: #14202B; max-width: 560px">Her son lives two hours away. Every call ends with the same worries: has she eaten, taken her tablets, is she safe at night? She can't always tell him.</p></div>
+<div><p style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #1F5C5A">How EVA helps</p>
+<ul style="margin: 10px 0 0; padding-left: 20px; font-size: 16px; line-height: 25px; color: #3D4A55; display: flex; flex-direction: column; gap: 8px; max-width: 560px"><li>Calm voice prompts for meals, drinks and tablets, in the same routine every day.</li><li>Notices night waking and sudden changes in confusion, and tells the nurse straight away.</li><li>Briefs every new carer on what she likes and what calms her.</li><li>Gives Daniel a plain daily summary, so every call can just be a chat.</li></ul></div>
+</div>
+<div class="cs-tile" style="background: #FBF0BE; border-radius: 28px; padding: 36px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; gap: 14px; min-height: 480px">
+<p style="margin: 0 0 4px; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A55">A day with EVA</p>
+<div style="background: #FFFFFF; border-radius: 18px; box-shadow: 0 10px 30px rgba(20,32,43,0.10); padding: 14px 16px; display: flex; gap: 12px; align-items: flex-start"><div class="" aria-hidden="true" style="width: 12px; height: 12px; border-radius: 50%; background: #4DA09A; flex: none; margin-top: 5px"></div><span style="font-size: 14px; line-height: 20px"><span style="color: #5A6670; font-size: 12px">08:30</span><br><b style="font-weight: 600">EVA</b> · for Margaret<br><span style="color: #3D4A55">Good morning, Margaret. Breakfast first, then your tablets with a glass of water.</span></span></div><div style="background: #FFFFFF; border-radius: 18px; box-shadow: 0 10px 30px rgba(20,32,43,0.10); padding: 14px 16px; display: flex; gap: 12px; align-items: flex-start"><div class="" aria-hidden="true" style="width: 12px; height: 12px; border-radius: 50%; background: #4DA09A; flex: none; margin-top: 5px"></div><span style="font-size: 14px; line-height: 20px"><span style="color: #5A6670; font-size: 12px">09:10</span><br><b style="font-weight: 600">EVA</b> · for Nurse Amira<br><span style="color: #3D4A55">Margaret was up three times last night and seems more confused today.</span></span></div><div style="background: #FFFFFF; border-radius: 18px; box-shadow: 0 10px 30px rgba(20,32,43,0.10); padding: 14px 16px; display: flex; gap: 12px; align-items: flex-start"><div class="breathe" aria-hidden="true" style="width: 12px; height: 12px; border-radius: 50%; background: #4DA09A; flex: none; margin-top: 5px"></div><span style="font-size: 14px; line-height: 20px"><span style="color: #5A6670; font-size: 12px">09:12</span><br><b style="font-weight: 600">EVA</b> · for Daniel<br><span style="color: #3D4A55">Mum had a restless night. Nurse Amira will visit this afternoon. I'll update you after.</span></span></div>
+</div>
+</div>
+</div>
+<div class="cs-panel cs-p3" role="tabpanel" aria-labelledby="cs-l3">
+<div class="cs-wide">
+<div style="display: flex; flex-direction: column; gap: 22px; padding: 8px 0">
+<div><p style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A55">Stroke recovery</p>
+<h3 class="h2" style="margin: 10px 0 0; font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: 36px; line-height: 42px; letter-spacing: -0.015em">George, 78, home after a stroke.</h3></div>
+<div><p style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #8A5A12">Where the family struggles</p>
+<p style="margin: 8px 0 0; font-size: 18px; line-height: 29px; color: #14202B; max-width: 560px">His daughter took leave to cover the first weeks home. Nobody explained the exercises, the new tablets or which warning signs mean call 999.</p></div>
+<div><p style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #1F5C5A">How EVA helps</p>
+<ul style="margin: 10px 0 0; padding-left: 20px; font-size: 16px; line-height: 25px; color: #3D4A55; display: flex; flex-direction: column; gap: 8px; max-width: 560px"><li>Guides his rehab exercises on the mirror and tracks progress for the therapist.</li><li>Logs blood pressure and every dose, and sends a summary to the GP.</li><li>Teaches the family the warning signs of another stroke, and who to call.</li><li>Lets Priya go back to work knowing the plan is being followed.</li></ul></div>
+</div>
+<div class="cs-tile" style="background: #DDEBDD; border-radius: 28px; padding: 36px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; gap: 14px; min-height: 480px">
+<p style="margin: 0 0 4px; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A55">A day with EVA</p>
+<div style="background: #FFFFFF; border-radius: 18px; box-shadow: 0 10px 30px rgba(20,32,43,0.10); padding: 14px 16px; display: flex; gap: 12px; align-items: flex-start"><div class="" aria-hidden="true" style="width: 12px; height: 12px; border-radius: 50%; background: #4DA09A; flex: none; margin-top: 5px"></div><span style="font-size: 14px; line-height: 20px"><span style="color: #5A6670; font-size: 12px">10:00</span><br><b style="font-weight: 600">EVA</b> · for George<br><span style="color: #3D4A55">Time for your arm exercises, George. Ten minutes at the mirror?</span></span></div><div style="background: #FFFFFF; border-radius: 18px; box-shadow: 0 10px 30px rgba(20,32,43,0.10); padding: 14px 16px; display: flex; gap: 12px; align-items: flex-start"><div class="" aria-hidden="true" style="width: 12px; height: 12px; border-radius: 50%; background: #4DA09A; flex: none; margin-top: 5px"></div><span style="font-size: 14px; line-height: 20px"><span style="color: #5A6670; font-size: 12px">10:15</span><br><b style="font-weight: 600">EVA</b> · for the therapist<br><span style="color: #3D4A55">Arm exercises done, 15 minutes. Reach improved again this week.</span></span></div><div style="background: #FFFFFF; border-radius: 18px; box-shadow: 0 10px 30px rgba(20,32,43,0.10); padding: 14px 16px; display: flex; gap: 12px; align-items: flex-start"><div class="breathe" aria-hidden="true" style="width: 12px; height: 12px; border-radius: 50%; background: #4DA09A; flex: none; margin-top: 5px"></div><span style="font-size: 14px; line-height: 20px"><span style="color: #5A6670; font-size: 12px">10:16</span><br><b style="font-weight: 600">EVA</b> · for Priya<br><span style="color: #3D4A55">Dad finished his exercises. Blood pressure 132/84, in his range.</span></span></div>
+</div>
+</div>
+</div>
+<div class="cs-panel cs-p4" role="tabpanel" aria-labelledby="cs-l4">
+<div class="cs-wide">
+<div style="display: flex; flex-direction: column; gap: 22px; padding: 8px 0">
+<div><p style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A55">Falls · living alone</p>
+<h3 class="h2" style="margin: 10px 0 0; font-family: 'Inter Tight', sans-serif; font-weight: 500; font-size: 36px; line-height: 42px; letter-spacing: -0.015em">Joan, 86, lives alone after a fall.</h3></div>
+<div><p style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #8A5A12">Where the family struggles</p>
+<p style="margin: 8px 0 0; font-size: 18px; line-height: 29px; color: #14202B; max-width: 560px">Since her hip fracture, her children check their phones all day. She always says she's fine, so they never really know.</p></div>
+<div><p style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #1F5C5A">How EVA helps</p>
+<ul style="margin: 10px 0 0; padding-left: 20px; font-size: 16px; line-height: 25px; color: #3D4A55; display: flex; flex-direction: column; gap: 8px; max-width: 560px"><li>Her watch alerts her check-in person if she falls.</li><li>Notices slower walking and fewer steps, early signs worth a check.</li><li>A short daily voice check-in; if she doesn't answer, family hears quickly.</li><li>Strength and balance sessions on the mirror, at her pace.</li></ul></div>
+</div>
+<div class="cs-tile" style="background: #CFE3EE; border-radius: 28px; padding: 36px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; gap: 14px; min-height: 480px">
+<p style="margin: 0 0 4px; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #3D4A55">A day with EVA</p>
+<div style="background: #FFFFFF; border-radius: 18px; box-shadow: 0 10px 30px rgba(20,32,43,0.10); padding: 14px 16px; display: flex; gap: 12px; align-items: flex-start"><div class="" aria-hidden="true" style="width: 12px; height: 12px; border-radius: 50%; background: #4DA09A; flex: none; margin-top: 5px"></div><span style="font-size: 14px; line-height: 20px"><span style="color: #5A6670; font-size: 12px">10:00</span><br><b style="font-weight: 600">EVA</b> · for Joan<br><span style="color: #3D4A55">Morning, Joan. How are you feeling today?</span></span></div><div style="background: #FFFFFF; border-radius: 18px; box-shadow: 0 10px 30px rgba(20,32,43,0.10); padding: 14px 16px; display: flex; gap: 12px; align-items: flex-start"><div class="" aria-hidden="true" style="width: 12px; height: 12px; border-radius: 50%; background: #4DA09A; flex: none; margin-top: 5px"></div><span style="font-size: 14px; line-height: 20px"><span style="color: #5A6670; font-size: 12px">10:20</span><br><b style="font-weight: 600">EVA</b> · for Sam, neighbour<br><span style="color: #3D4A55">Joan hasn't answered her check-in. Could you knock on her door?</span></span></div><div style="background: #FFFFFF; border-radius: 18px; box-shadow: 0 10px 30px rgba(20,32,43,0.10); padding: 14px 16px; display: flex; gap: 12px; align-items: flex-start"><div class="breathe" aria-hidden="true" style="width: 12px; height: 12px; border-radius: 50%; background: #4DA09A; flex: none; margin-top: 5px"></div><span style="font-size: 14px; line-height: 20px"><span style="color: #5A6670; font-size: 12px">10:24</span><br><b style="font-weight: 600">EVA</b> · for David<br><span style="color: #3D4A55">Sam has checked in. Mum is fine, she was in the garden.</span></span></div>
+</div>
+</div>
+</div>
+</div>
+<p style="margin: 32px 0 0; font-size: 13px; line-height: 20px; color: #5A6670">Elena, Margaret, George and Joan are composite cases for illustration, not real patients. Names and screens are illustrative.</p>
 </div>
 </section>
 
